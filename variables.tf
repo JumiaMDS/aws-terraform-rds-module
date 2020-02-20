@@ -68,3 +68,9 @@ variable "read_replica_instance_type" {
 variable "subnet_ids" {
   type = set(string)
 }
+
+variable "tags" {
+  type        = map
+  description = "Tags for redis nodes"
+  default     = {}
+}

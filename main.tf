@@ -44,8 +44,7 @@ resource "aws_db_instance" "main_rds_instance" {
   db_subnet_group_name = aws_db_subnet_group.main_db_subnet_group.name
 
   tags = {
-    business-unit = "JMDS"
-    application   = "rds-postgres"
+    terraform = "true"
   }
 
   lifecycle {
@@ -71,7 +70,6 @@ resource "aws_db_instance" "read_replica_rds_instance" {
   count = var.read_replica
 
   tags = {
-    business-unit = "JMDS"
-    application   = "rds-postgres"
+    terraform = "true"
   }
 }

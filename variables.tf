@@ -71,6 +71,6 @@ variable "subnet_ids" {
 
 variable "tags" {
   type        = map
-  description = "Tags for redis nodes"
+  description = "Tags for rds"
   default     = {}
 }

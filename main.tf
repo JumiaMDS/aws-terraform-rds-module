@@ -2,11 +2,9 @@ resource "aws_db_subnet_group" "main_db_subnet_group" {
   name        = "${var.environment}-${var.rds_instance_name}-subnetgrp"
   description = "${var.environment}-${var.rds_instance_name} RDS subnet group"
   subnet_ids  = var.subnet_ids
-
-  tags = {
-    terraform     = "true"
-  }
-
+  
+  tags = merge(var.tags)
+  
   lifecycle {
     ignore_changes = [name, description, tags]
   }
@@ -43,10 +41,8 @@ resource "aws_db_instance" "main_rds_instance" {
   // We're creating a subnet group in the module and passing in the name
   db_subnet_group_name = aws_db_subnet_group.main_db_subnet_group.name
 
-  tags = {
-    terraform = "true"
-  }
-
+  tags = merge(var.tags)
+    
   lifecycle {
     ignore_changes = [final_snapshot_identifier]
   }
@@ -69,7 +65,6 @@ resource "aws_db_instance" "read_replica_rds_instance" {
 
   count = var.read_replica
 
-  tags = {
-    terraform = "true"
-  }
+  tags = merge(var.tags)
+
 }

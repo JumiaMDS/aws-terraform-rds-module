@@ -13,6 +13,7 @@ resource "aws_db_subnet_group" "main_db_subnet_group" {
 resource "aws_db_instance" "main_rds_instance" {
   identifier                   = var.rds_instance_name
   allocated_storage            = var.rds_allocated_storage
+  allow_major_version_upgrade  = true
   deletion_protection          = var.rds_deletion_protection
   engine                       = var.rds_engine_type
   engine_version               = var.rds_engine_version
